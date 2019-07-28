@@ -6,9 +6,30 @@
 @version 0.2.1
 ==/UserStyle== */
 
-@-moz-document url-prefix("https://learn.uq.edu.au/") {
+/* Removed mozilla document declaration as it is incompatible with Safari (???) */
+/* @-moz-document url-prefix("https://learn.uq.edu.au/") { */
     /* thanks UQ, I now hate open sans */
-    * { font-family: 'Arial', 'Helvetica', sans-serif; }
+	/* matt edit: this is tasteful */
+	@import url('https://rsms.me/inter/inter.css');
+
+    * {
+      	font-family: 'Inter', 'Arial', sans-serif; 
+    }
+
+	:root {
+     	--main-color: #333333;
+      	--gray-color: #999999;
+      	--border-color: #FFFFFF;
+    }
+
+	/* make links fit the aesthetic */
+	a {
+     	color: var(--gray-color);
+    }
+
+	a:hover {
+     	color: var(--border-color);
+    }
     
     /* vector logo */
     .brandingImgWrap img {
@@ -18,9 +39,16 @@
         top: 19px;
         object-position: -99999px 10px; /* hack to hide original image */
     }
+
+	/* resize columns */
+	#column0 { width: 25% !important; }
+    #column1 { width: 50% !important; }
+    #column2 { width: 25% !important; }
+
     
 /*  bring back the purple */
-    #topTabs { background-color: #62257c}
+/* 	edit: no */
+    #topTabs { background-color: var(--main-color)}
     
 /*  hide the tiny but useless links button */
     #quick_links_wrap { display: none }
@@ -34,6 +62,15 @@
         margin: 0 4px 2px 2px; 
         padding: 6px 6px 6px 30px;
     }
+
+/* 	make blackboard grey again */
+	#courseMenuPalette div.navPaletteContent {
+      	background-color: var(--main-color);
+    }
+
+	#courseMenuPalette_contents li {
+      	background-color: var(--main-color);
+    }
     
 /*  remove excessive padding from top left menu */
     .appTabs a { padding: 8px; } 
@@ -42,6 +79,8 @@
         border-bottom: 3px solid #fff0; /* fix alignment of active vs inactive tabs. */
         padding-bottom: 0px !important; /* remove excessive padding */
     }
+
+	.appTabs td.active { border-bottom: 3px solid var(--gray-color); }
     
 /*  undo excessively high sidebar */
     .topTabs .tabWrapper-right { height: unset; }
@@ -73,17 +112,21 @@
 /*  hide help button in breadcrumbs */
     #breadcrumb_controls_id { display: none }
     
-/*  make welcome header bars and borders darker */
-    .portlet h2 { background-color: #e8e8e8; }
-    .portlet { border-color: #8a8a8a; }
+/*  make welcome header bars and borders NOT */
+    .portlet h2 { background-color: var(--border-color); }
+    .portlet { border-color: var(--border-color); }
 /*  hide customisation bar */
     #actionbar { display: none}
 /*  don't expand course rows when hovering */
     .menu-item li:hover { white-space: nowrap; background: #d4d4d4; border-top: 0px; border-bottom: 1px solid white; }
-/*  vertically center semester headings */
-    .menu-item h4 { line-height: 23px; }
+/*  vertically center semester headings & make black */
+    .menu-item h4 {
+    	line-height: 23px;
+      	background-color: var(--main-color);
+    }
     
 /*  darker borders for boxes in welcome page */
     .portal nav { box-shadow: none; border: 1px solid #cdcdcd}
     
-}
+/*}*/
+
